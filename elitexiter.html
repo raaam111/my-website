@@ -1,0 +1,1579 @@
+
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="img/ELITE.png">
+    <title>𝐄𝐋𝐈𝐓𝐄 𝐗𝐈𝐓𝐄𝐑𝐒</title>
+</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PANEL FREE FIRE| Premium Game Enhancement Suite</title>
+    <style>
+        
+        :root {
+            --primary: #003cff;
+            --primary-light: #0026fc;
+            --primary-dark: #ffffff;
+            --secondary: #00b4ff;
+            --secondary-light: #00e5ff;
+            --secondary-dark: #0088cc;
+            --dark: #0a0e17;
+            --darker: #0044ff;
+            --light: #faf8f9;
+            --gray: #6c757d;
+            --success: #9fa728;
+            --danger: #dc3545;
+            --warning: #ffc107;
+            --info: #b81788;
+            --font-main: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            --font-code: 'Consolas', 'Monaco', 'Courier New', monospace;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-main);
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.7;
+            background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            overflow-x: hidden;
+        }
+
+        body.light-theme {
+            background-color: var(--light);
+            color: var(--dark);
+        }
+        
+        body:before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 23, 0.95);
+            z-index: -1;
+            transition: all 0.4s ease;
+        }
+
+        body.light-theme:before {
+            background: rgba(248, 249, 250, 0.95);
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            padding: 5rem 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            bottom: -15px;
+            left: 20%;
+            border-radius: 2px;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 0, 0, 0.3);
+            transition: all 0.4s ease;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+        
+        .logo-text span {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--primary-light);
+            letter-spacing: 1px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        nav ul li a {
+            color: white;
+            font-weight: 600;
+            font-size: 1.05rem;
+            position: relative;
+            padding: 0.5rem 0;
+            display: block;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0, 26, 255, 0.2) 0%, rgba(0, 0, 0, 0.9) 70%);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        /* Features Section */
+        .features {
+            background: rgba(6, 9, 15, 0.7);
+            backdrop-filter: blur(10px);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: rgba(14, 17, 26, 0.7);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(4, 0, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(46, 17, 0, 0.05), rgba(255,94,0,0.01));
+            z-index: -1;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 0, 0, 0.15);
+            border-color: rgba(255, 0, 0, 0.5);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-light);
+        }
+        
+        .feature-desc {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.05rem;
+        }
+        
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-card {
+            padding: 2rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            background: rgba(10, 15, 25, 0.8);
+        }
+        
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            background: rgba(20, 25, 40, 0.6);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .step:hover {
+            background: rgba(41, 41, 41, 0.8);
+            transform: translateX(10px);
+        }
+        
+        .step-number {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .step-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-light);
+        }
+        
+        /* Pricing Section */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .pricing-card {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0, 17, 255, 0.3);
+            position: relative;
+        }
+        
+        .pricing-card.popular {
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.popular:before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: var(--primary);
+            color: white;
+            padding: 0.3rem 2rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transform: rotate(45deg);
+            transform-origin: center;
+            z-index: 1;
+        }
+        
+        .pricing-header {
+            padding: 2rem;
+            background: rgba(255, 0, 0, 0.1);
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 0, 0, 0.2);
+        }
+        
+        .pricing-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-light);
+        }
+        
+        .pricing-price {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-price span {
+            font-size: 1rem;
+            font-weight: normal;
+            opacity: 0.8;
+        }
+        
+        .pricing-duration {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        .pricing-features {
+            padding: 2rem;
+        }
+        
+        .pricing-features ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-features ul li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .pricing-features ul li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-features ul li i {
+            color: var(--primary);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background: rgba(15, 20, 35, 0.7);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background: rgba(25, 30, 45, 0.7);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 94, 0, 0.2);
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(255, 94, 0, 0.1);
+            font-family: serif;
+            line-height: 1;
+            z-index: 0;
+        }
+        
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+        
+        .author-info h4 {
+            font-size: 1.1rem;
+            color: white;
+        }
+        
+        .author-info p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0;
+        }
+        
+        .rating {
+            color: var(--warning);
+            margin-top: 5px;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            background: rgba(10, 15, 25, 0.8);
+        }
+        
+        .accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .accordion-item {
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            background: rgba(20, 25, 40, 0.6);
+            border: 1px solid rgba(25, 0, 255, 0.2);
+        }
+        
+        .accordion-header {
+            padding: 1.5rem;
+            background: rgba(58, 58, 58, 0.1);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-header:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .accordion-header i {
+            transition: transform 0.3s ease;
+        }
+        
+        .accordion-item.active .accordion-header i {
+            transform: rotate(180deg);
+        }
+        
+        .accordion-content {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-item.active .accordion-content {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            text-align: center;
+            padding: 6rem 0;
+        }
+        
+        .cta h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(5, 10, 20, 0.95);
+            padding: 5rem 0 2rem;
+            border-top: 1px solid rgba(17, 0, 255, 0.2);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+            color: var(--primary-light);
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-light);
+            padding-left: 5px;
+        }
+        
+        .footer-links a i {
+            width: 20px;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .section {
+                padding: 4rem 0;
+            }
+            
+            .hero {
+                padding: 6rem 0 4rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.4rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .pricing-card.popular {
+                transform: none;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .cta h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .hero {
+                padding: 5rem 0 3rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .step {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .pricing-card.popular:before {
+                right: -25px;
+                padding: 0.3rem 1.5rem;
+                font-size: 0.7rem;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        .slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+        
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            border: 1px solid var(--primary);
+            font-size: 0.9rem;
+        }
+        
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: 0.25rem;
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-light);
+        }
+    </style>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!DOCTYPE html>
+    <html lang="ar">
+    <head>
+      <meta charset="UTF-8">
+      <title>خلفية متساقطة لشعار نسرين</title>
+      <style>
+        body {
+          margin: 0;
+          padding: 0;
+          background: radial-gradient(circle at center, #000000 0%, #000 90%);
+          font-family: Arial, sans-serif;
+          overflow-x: hidden;
+          position: relative;
+          z-index: 1;
+        }
+    
+        /* الحاوية في الخلفية */
+        .background-logo-fall {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          z-index: 0; /* تأكد أنها بالخلفية */
+          overflow: hidden;
+        }
+    
+        .logo-fall {
+          position: absolute;
+          top: -50px;
+          width: 40px;
+          height: auto;
+          opacity: 0.07;
+          animation: fall linear infinite;
+        }
+    
+        @keyframes fall {
+          0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0.1;
+          }
+          100% {
+            transform: translateY(110vh) rotate(360deg);
+            opacity: 0;
+          }
+        }
+      </style>
+    </head>
+    <body>
+    
+      <!-- حاوية الخلفية للشعار المتساقط -->
+      <div class="background-logo-fall" id="background-logo-fall"></div>
+    
+      <!-- المحتوى الأمامي -->
+       </header>
+    
+      <script>
+        const container = document.getElementById('background-logo-fall');
+    
+        for (let i = 0; i < 40; i++) {
+          const flake = document.createElement('img');
+          flake.src = 'IMAGE/RY.png'; // تأكد من وجود الصورة في هذا المسار
+          flake.className = 'logo-fall';
+    
+          // إعدادات عشوائية
+          const left = Math.random() * 100; // من 0 إلى 100%
+          const duration = 8 + Math.random() * 7; // من 8 إلى 15 ثانية
+          const delay = Math.random() * 5; // من 0 إلى 5 ثوانٍ
+          const size = 20 + Math.random() * 30; // حجم من 20 إلى 50 بكسل
+    
+          flake.style.left = `${left}%`;
+          flake.style.animationDuration = `${duration}s`;
+          flake.style.animationDelay = `${delay}s`;
+          flake.style.width = `${size}px`;
+    
+          container.appendChild(flake);
+        }
+      </script>
+    
+    </body>
+    </html>
+    <!DOCTYPE html>
+    <html lang="ar">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>تأثير الجسيمات مع الثلوج</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        <style>
+      
+    
+            canvas {
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: -1;
+            }
+        </style>
+        
+    </head>
+    <body>
+    
+        <!-- إضافة الشعار -->
+    
+        <script>
+            let scene = new THREE.Scene();
+            let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            let renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+    
+            // إعداد الجسيمات (النجوم)
+            let particlesGeometry = new THREE.BufferGeometry();
+            let particlesCount = 0; // زيادة عدد الجسيمات
+            let positions = new Float32Array(particlesCount * 3);
+            let colors = new Float32Array(particlesCount * 3);
+    
+            for (let i = 0; i < particlesCount * 3; i++) {
+                positions[i] = (Math.random() - 0.5) * 1000;
+                colors[i] = Math.random();
+            }
+    
+            particlesGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+            particlesGeometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+    
+            let particlesMaterial = new THREE.PointsMaterial({
+                size: 2,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.8
+            });
+    
+            let particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particlesMesh);
+    
+            // إعداد الجسيمات (الثلوج)
+            let snowGeometry = new THREE.BufferGeometry();
+            let snowCount = 300; // زيادة عدد الجسيمات
+            let snowPositions = new Float32Array(snowCount * 3);
+    
+            for (let i = 0; i < snowCount * 3; i++) {
+                snowPositions[i] = (Math.random() - 0.5) * 1000;
+            }
+    
+            snowGeometry.setAttribute("position", new THREE.BufferAttribute(snowPositions, 3));
+    
+            let snowMaterial = new THREE.PointsMaterial({
+                color: 0xFF0000, // لون الثلج أبيض
+                size: 3.5,
+                transparent: true,
+                opacity: 0.8
+            });
+    
+            let snowMesh = new THREE.Points(snowGeometry, snowMaterial);
+            scene.add(snowMesh);
+    
+            camera.position.z = 5;
+    
+            function animateParticles() {
+                particlesMesh.rotation.y += 0.001;
+                particlesMesh.rotation.x += 0.001;
+    
+                let snowPositions = snowGeometry.attributes.position.array;
+                for (let i = 1; i < snowPositions.length; i += 3) {
+                    snowPositions[i] -= 2; // حركة الثلوج للأسفل
+                    if (snowPositions[i] < -500) snowPositions[i] = 500; // إعادة تعيين الموضع للأعلى
+                }
+                snowGeometry.attributes.position.needsUpdate = true;
+    
+                renderer.render(scene, camera);
+                requestAnimationFrame(animateParticles);
+            }
+    
+            animateParticles();
+    
+      
+        </script>
+    
+    </body>
+    </html>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="#features" class="logo">
+                <img src="img/ELITE.png" alt="𝐄𝐋𝐈𝐓𝐄 𝐗𝐈𝐓𝐄𝐑𝐒">
+                <div class="logo-text">
+                    𝐄𝐋𝐈𝐓𝐄 𝐗𝐈𝐓𝐄𝐑𝐒 <span>PREMIUM ENHANCEMENT</span>
+                </div>
+            </a>
+            <nav>
+                <ul>
+
+                    <!-- <li><a href="free.html">Panel LifeTime</a></li> -->
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    
+                </ul>
+            </nav>
+      
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content fade-in">
+            <h1>Dominate Free Fire with a host of premium improvements.</h1>
+            <p>Enjoy the latest and greatest gaming enhancement tools with our premium board</p>
+</p>
+            <div class="hero-buttons">
+                <a href="#pricing" class="btn btn-primary">Start Now</a>
+                <a href="#features" class="btn btn-outline">Explore Features</a>
+
+            </div>
+        </div>
+    </section>
+    
+ 
+    </section>
+    
+    <!-- Features Section -->
+    <section id="features" class="features section">
+        <div class="container">
+            <div class="section-title">
+                <h2>الميزات المتميزة</h2>
+            </div>
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card slide-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-crosshairs"></i>
+                    </div>
+                    <h3 class="feature-title">Advanced Aim Assist</h3>
+                  
+                    <p class="feature-desc"><h4>Arabic</h4>
+                    <h3>يوفر برنامج الهيدشوت الخاص بنا والمدعوم بالذكاء الاصطناعي استهدافًا دقيقًا مع أنماط حركة تشبه الإنسان لتجنب الاكتشاف.</h3></p>
+                        <h4>English</h4>
+                        <h3>Our AI-powered headshot software provides precise targeting with human-like movement patterns to avoid detection.</h3>
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card slide-up delay-1">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3 class="feature-title">Security Panel Undetected</h3>
+                    <p class="feature-desc"> <h4>Arabic</4>
+                      <h3> يضمن التشفير العسكري وأنماط السلوك العشوائية إخفاء الهوية بشكل كامل والحماية من الحظر<h3>
+                        
+
+                        <h4>English</h4>
+                         <h3>Military-grade encryption and random behavior ensure complete anonymity and protection from US companies.</h3>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card slide-up delay-2">
+                    <div class="feature-icon">
+                        <i class="fas fa-broadcast-tower"></i>
+                    </div>
+                    <h3 class="feature-title">ESP FUNCTION AND CHAMS 3D </h3>
+                    <p class="feature-desc"><h4>English</h4>
+                        <h3> enemy locations, loot, and vehicles through walls with our advanced 3D environmental sensing technology.></h3>
+                    <h4>Arabic</h4>
+                        <h3>شاهد مواقع العدو والغنائم والمركبات من خلال الجدران باستخدام تقنية الاستشعار البيئي ثلاثية الأبعاد المتقدمة لدينا.
+</h3>
+                    </p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card slide-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt-fast"></i>
+                    </div>
+                    <h3 class="feature-title">Optimization Performance</h3>
+                    <p class="feature-desc"><h4>Improve game performance with FPS booster and network latency reducer tools for a smoother gaming experience.</h3></p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <!-- <div class="feature-card slide-up delay-1">
+                    <div class="feature-icon">
+                        <i class="fas fa-ghost"></i>
+                    </div>
+                    <h3 class="feature-title">وضع الشبح</h3>
+                    <p class="feature-desc">تحرك بصمت، وكن غير مرئي لرادار العدو، واحصل على حصانة مؤقتة بفضل بروتوكولات الأشباح النخبوية لدينا.</p>
+                </div> -->
+                
+                <!-- Feature 6 -->
+                <div class="feature-card slide-up delay-2">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3 class="feature-title">التحديثات التلقائية</h3>
+                    <p class="feature-desc">يقوم نظامنا بالتحديث تلقائيًا لتجاوز أحدث تصحيحات اللعبة، مما يضمن خدمة مستمرة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How It Works -->
+    <section id="how-it-works" class="how-it-works section">
+        <div class="container">
+            <div class="section-title">
+                <h2>How It Works</h2>
+            </div>
+            <div class="steps">
+                <!-- Step 1 -->
+                <div class="step slide-up">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>تنزيل وتثبيت</h3>
+                        <p>Get our lightweight client (less than 5MB) that improves game performance And Tur Off Antivirus </p>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="step slide-up delay-1">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>تخصيص إعداداتك</h3>
+                        <p>استخدم لوحة التحكم سهلة الاستخدام لضبط الميزات بما يتناسب مع أسلوب لعبك. تتوفر إعدادات مسبقة تناسب جميع المستويات، من المبتدئين إلى المحترفين.</p>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="step slide-up delay-2">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>الإطلاق والسيطرة</h3>
+                        <p>ابدأ اللعبة من خلال برنامج التشغيل الخاص بنا واستمتع بالميزة التنافسية باستخدام أدوات التحسين المتقدمة لدينا.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pricing Plans</h2>
+            </div>
+            <div class="pricing-grid">
+                <!-- Plan 1 -->
+                <div class="pricing-card slide-up">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">External</h3>
+                        <div class="pricing-price">$10.99 <span>/month</span></div>
+                        <div class="pricing-duration">2-day money back guarantee</div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> AimBot Extrnal</li>
+                            <li><i class="fas fa-check"></i> 3D ESP Radar</li>
+                            <li><i class="fas fa-check"></i> Awm Scope</li>
+                            <li><i class="fas fa-check"></i> Fast Switsch</li>
+                            <li><i class="fas fa-check"></i> Awm No Scope</li>
+                            <li><i class="fas fa-check"></i> Camera Lift</li>
+                        </ul>
+                        <a class='btn btn-primary' href='/payment' target='_blank'>Choose Plan</a>
+                    </div>
+                </div>
+                
+                <!-- Plan 2 -->
+                <div class="pricing-card popular slide-up delay-1">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Prime Pro</h3>
+                        <div class="pricing-price">$15.99 <span>/6 month</span></div>
+                        <div class="pricing-duration">Most popular choice</div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> AimBot Extrnal</li>
+                            <li><i class="fas fa-check"></i> AimBot Drag External</li>
+                            <li><i class="fas fa-check"></i> 3D ESP Radar</li>
+                            <li><i class="fas fa-check"></i> Chams Menu Wukong And More</li>
+                            <li><i class="fas fa-check"></i> Awm Scope</li>
+                            <li><i class="fas fa-check"></i> Fast Switsch</li>
+                            <li><i class="fas fa-check"></i> Awm No Scope</li>
+                            <li><i class="fas fa-check"></i> Camera Lift</li>
+                            <li><i class="fas fa-check"></i> Fast Landing</li>
+                        </ul>
+                        <a class='btn btn-primary' href='/payment' target='_blank'>Choose Plan</a>
+                    </div>
+                </div>
+                
+                <!-- Plan 3 -->
+                <div class="pricing-card slide-up delay-2">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Internal X External</h3>
+                        <div class="pricing-price">$20.99 <span>/lifelong</span></div>
+                        <div class="pricing-duration">Best value - save 100%</div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> AimBot Extrnal</li>
+                            <li><i class="fas fa-check"></i> Aimbot Drag External</li>
+                            <li><i class="fas fa-check"></i> Aimbot Ia</li>
+                            <li><i class="fas fa-check"></i> Esp Line</li>
+                            <li><i class="fas fa-check"></i> Esp Name</li>
+                            <li><i class="fas fa-check"></i> Esp Health</li>
+                            <li><i class="fas fa-check"></i> Esp Bones</li>
+                            <li><i class="fas fa-check"></i> Fake Lag</li>
+                            <li><i class="fas fa-check"></i> Stream Mode Panel & Esp</li>
+                        </ul>
+                        <a class='btn btn-primary' href='/payment' target='_blank'>Choose Plan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </section>
+    
+    <!-- FAQ Section -->
+    <section id="faq" class="faq section">
+        <div class="container">
+            <div class="section-title">
+                <h2>الأسئلة الشائعة</h2>
+            </div>
+            <div class="accordion">
+                <!-- FAQ 1 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>هل يمكن اكتشاف ذلك من خلال نظام مكافحة الغش في اللعبة؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>يستخدم نظامنا تشفيرًا عسكريًا وأنماط سلوك عشوائية تجعله شبه خفي. لم نتلقَّ أيَّ حظر مُبلَّغ عنه خلال الأشهر الثمانية الماضية لقاعدة مستخدمينا التي يزيد عددها عن 5,000 مستخدم، وذلك عند استخدامه وفقًا لإرشاداتنا.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 2 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>كم مرة تقوم بتحديث البرنامج؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>نُصدر تحديثات بسيطة أسبوعيًا وتحديثات رئيسية خلال ٢٤ ساعة من أي تحديث للعبة. يحصل مشتركو باقة Elite على تحديثات فورية تلقائيًا، بينما تحصل الباقات الأخرى على تحديثات خلال يوم إلى ثلاثة أيام، حسب مستوى اشتراكهم.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 3 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>هل يمكنني استخدام هذا على أجهزة متعددة؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>كل ترخيص صالح لجهاز واحد في كل مرة. مع ذلك، يمكنك نقل ترخيصك إلى جهاز جديد حتى ثلاث مرات شهريًا عبر لوحة معلومات حسابك.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 4 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>ما هي طرق الدفع التي تقبلونها؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>نقبل جميع بطاقات الائتمان الرئيسية، وPayPal، وBitcoin، وغيرها من العملات المشفرة لضمان أقصى درجات الخصوصية. تتم معالجة جميع المدفوعات عبر قنوات آمنة ومشفرة.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 5 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>هل تقدمون استرداد الأموال؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>نقدم ضمان استرداد الأموال لمدة يومين لجميع المشتركين الجدد. بعد هذه الفترة، يُمكننا تقديم استرداد نسبي للوقت غير المُستخدم في ظروف خاصة - تواصل مع فريق الدعم لدينا للحصول على المساعدة.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+  
+      
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <!-- Column 1 -->
+                <div class="footer-column">
+                    <h3>Most Info</h3>
+                    <p>The most advanced Free Fire optimization platform, trusted by competitive players across the game.</p>
+                    <div class="social-links">
+                        <a href="https://discord.gg/TsnqvkADMg" target="_blank"><i class="fab fa-discord"></i></a>
+                        <a href="https://youtube.com/@DUTCH-LOVE" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Column 2 -->
+                <div class="footer-column">
+                    <h3> Fast Link</h3>
+                    <ul class="footer-links">
+                        <li><a href="#features"><i class="fas fa-chevron-right"></i> Features</a></li>
+                        <li><a href="#how-it-works"><i class="fas fa-chevron-right"></i> How It Works</a></li>
+                        <li><a href="#pricing"><i class="fas fa-chevron-right"></i> Pricing</a></li>
+                        <li><a href="#faq"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 -->
+                <div class="footer-column">
+                    <h3>Contact us</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-envelope"></i> 𝐄𝐋𝐈𝐓𝐄 𝐗𝐈𝐓𝐄𝐑𝐒 @gmail.com</a></li>
+                        <li><a href="https://discord.gg/TsnqvkADMg"><i class="fas fa-comment-alt"></i> Discord Support</a></li>
+                        <li><a href=""><i class="fas fa-clock"></i> 24/7 Availability</a></li>
+                    </ul>
+                </div>
+                </div>
+                
+           
+            
+            <div class="footer-bottom">
+                <p>&copy;Welcome to our Site  𝐄𝐋𝐈𝐓𝐄 𝐗𝐈𝐓𝐄𝐑𝐒 </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all items first
+                document.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                
+                // Open current if it was closed
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animation on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.slide-up');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animated elements
+        document.querySelectorAll('.slide-up').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+        });
+        
+        // Run once on load
+        animateOnScroll();
+        
+        // Then on scroll
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Theme toggle functionality
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('light-theme');
+            
+            // Save preference to localStorage
+            if (document.body.classList.contains('light-theme')) {
+                localStorage.setItem('theme', 'light');
+            } else {
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-theme');
+        }
+    </script>
+</body>
+</html>
