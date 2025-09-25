@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .profile-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #FF6347; /* Example color */
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .profile-info h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .days-exam {
+            background-color: #f0f2f5;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 15px;
+        }
+        
+        .sidebar-menu a {
+            text-decoration: none;
+            color: #555;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+
+        .sidebar-menu a:hover {
+            background-color: #f0f2f5;
+        }
+
+        .sidebar-menu .active a {
+            background-color: #f0ebf7;
+            color: #9333ea;
+            font-weight: bold;
+        }
+        
+        .sidebar-menu a img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .top-navbar {
+            background-color: #ffffff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .top-navbar a {
+            text-decoration: none;
+            color: #555;
+            margin-left: 20px;
+            font-size: 16px;
+            transition: color 0.3s ease; /* Smooth transition */
+        }
+
+        .top-navbar a:hover {
+            color: #9333ea; /* Highlight color on hover */
+        }
+        
+        .top-navbar a.home-icon {
+            margin-right: auto; /* Pushes the home icon to the left */
+        }
+
+        .top-navbar .home-icon img {
+            height: 24px; /* Adjust size as needed */
+            vertical-align: middle;
+        }
+
+        .page-header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .offer-card {
+            background-color: #1a233b;
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            position: relative;
+            cursor: pointer; /* Indicate it's clickable */
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+        }
+
+        .offer-card:hover {
+            background-color: #2c395e; /* Slightly lighter on hover */
+            transform: translateY(-2px); /* Slight lift effect */
+        }
+
+        .offer-card .offer-text {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .offer-card .offer-discount {
+            font-size: 14px;
+            color: #b0c2e0;
+        }
+        
+        .offer-timer {
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timer-info {
+            color: #000000;
+            font-size: 16px;
+            margin-right: 20px;
+        }
+
+        .timer-value {
+            color: #ff0000;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .timer-value span {
+            font-size: 12px;
+            display: block;
+            color: #555;
+            font-weight: normal;
+        }
+        
+        .pricing-section {
+            margin-top: 30px;
+        }
+        
+        .pricing-header {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .plan-tabs {
+            display: flex;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            width: fit-content;
+            margin-bottom: 20px;
+        }
+
+        .plan-tabs button {
+            background-color: transparent;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #555;
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+        }
+
+        .plan-tabs button:not(.active):hover { /* Apply hover only to non-active buttons */
+            background-color: #c9c9c9; /* Slightly darker on hover */
+            color: #333;
+        }
+
+        .plan-tabs button.active {
+            background-color: #9333ea;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .pricing-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .price-card {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+        }
+
+        .price-card:hover {
+            background-color: #f8f8f8; /* Slightly lighter on hover */
+            transform: translateY(-3px); /* Slight lift effect */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* More prominent shadow */
+        }
+
+        .discount-badge {
+            background-color: #8B5CF6;
+            color: #ffffff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+        }
+
+        .price-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .price-details {
+            display: flex;
+            align-items: baseline;
+        }
+
+        .price-details .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 14px;
+            margin-right: 5px;
+        }
+
+        .price-details .final-price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .price-card .plan-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .price-card .save-info {
+            font-size: 14px;
+            color: #22c55e;
+            font-weight: bold;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #550a8a;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 14px;
+            margin-top: auto;
+        }
+        
+        /* Popup Styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none; /* Initially hidden */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="sidebar">
+            <div>
+                <div class="profile-section">
+                    <div class="profile-icon">S</div>
+                    <div class="profile-info">
+                        <h3>Welcome, Sachin</h3>
+                        <div class="days-exam">
+                            📅 218 <br> Days To Exam
+                        </div>
+                    </div>
+                </div>
+                
+                <ul class="sidebar-menu">
+                    <li class="active"><a href="subscription_page.html"><img src="https://files.catbox.moe/qsisip.png" alt="Go Premium Icon">Go Premium</a></li>
+                    <li><a href="#"><img src="https://files.catbox.moe/6jfqpl.png" alt="Blogs Icon">Blogs</a></li>
+                    <li><a href="#"><img src="https://files.catbox.moe/mv21i0.png" alt="Study Circle Icon">Study Circle</a></li>
+                    <li><a href="weekly_report.html"><img src="https://files.catbox.moe/qojsi7.png" alt="Weekly Report Icon">Weekly Report</a></li>
+                </ul>
+                
+                <ul class="sidebar-menu">
+                    <li><a href="#" id="contactLink"><img src="https://files.catbox.moe/cmlw5f.png" alt="Contact Us Icon">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer">
+                © 2025 - McqDb.com
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="top-navbar">
+                <a href="index.html" class="home-icon">
+                    <img src="https://files.catbox.moe/ag0fna.png" alt="Home">
+                </a>
+                <a href="#">Workout</a>
+                <a href="#">Revision</a>
+                <a href="#">Insights</a>
+                <a href="#">Discussion</a>
+                <a href="#">Social</a>
+            </div>
+            
+            <div class="page-header">Premium Account</div>
+
+            <div class="offer-card">
+                <div class="offer-text">Early Bird Offer for you</div>
+                <div class="offer-discount">Get additional 25% discount</div>
+            </div>
+
+            <div class="offer-timer">
+                <div class="timer-info">
+                    <p style="margin: 0; font-weight: bold;">Expires in :</p>
+                </div>
+                <div class="timer-value">
+                    <span style="display: inline-block;">250<br><sub>DAYS</sub></span>
+                </div>
+            </div>
+            
+            <div class="pricing-section">
+                <div class="pricing-header">Featured Pricing <span style="color: #9333ea;">Plans</span></div>
+                
+                <div class="plan-tabs">
+                    <button>11th</button>
+                    <button class="active">12th</button>
+                </div>
+
+                <div class="pricing-cards">
+                    <div class="price-card">
+                        <div class="price-info">
+                            <div class="price-details">
+                                <div class="plan-name">NEET 2026</div>
+                            </div>
+                            <div class="price-details">
+                                <span class="final-price">12th</span>
+                            </div>
+                        </div>
+                        <div class="save-info">• Active Subscription</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="popup-overlay" id="contactPopup">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <p>You can contact us via email at:</p>
+            <p><b>darwin92777@gmail.com</b></p>
+        </div>
+    </div>
+
+    <script>
+        function openPopup() {
+            document.getElementById('contactPopup').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('contactPopup').style.display = 'none';
+        }
+
+        document.getElementById('contactLink').addEventListener('click', function(event) {
+            event.preventDefault();
+            openPopup();
+        });
+    </script>
+</body>
+</html>

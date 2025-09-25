@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Report</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .profile-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #FF6347;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .profile-info h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .days-exam {
+            background-color: #f0f2f5;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar-menu a {
+            text-decoration: none;
+            color: #555;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        
+        .sidebar-menu a:hover {
+            background-color: #f0f2f5;
+        }
+        
+        .sidebar-menu a img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .top-navbar {
+            background-color: #ffffff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .top-navbar a {
+            text-decoration: none;
+            color: #555;
+            margin-left: 20px;
+            font-size: 16px;
+        }
+        
+        .top-navbar .home-icon img {
+            height: 24px;
+            width: auto;
+            margin-right: auto;
+            margin-left: 0;
+        }
+
+        .report-header {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .report-subheader {
+            font-size: 16px;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .report-card {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .card-title img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .stat-item {
+            background-color: #f0f2f5;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-item .value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #9333ea;
+        }
+
+        .stat-item .label {
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .progress-bar-container {
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin-top: 10px;
+            height: 10px;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            border-radius: 5px;
+            background: linear-gradient(90deg, #10B981, #06B6D4);
+        }
+
+        .list-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .list-item:last-child {
+            border-bottom: none;
+        }
+
+        .topic-name {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .topic-score {
+            font-size: 16px;
+            color: #9333ea;
+            font-weight: bold;
+        }
+
+        .footer {
+            background-color: #550a8a;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="sidebar">
+            <div>
+                <div class="profile-section">
+                    <div class="profile-icon">S</div>
+                    <div class="profile-info">
+                        <h3>Welcome, Sachin</h3>
+                        <div class="days-exam">
+                            📅 218 <br> Days To Exam
+                        </div>
+                    </div>
+                </div>
+                
+                <ul class="sidebar-menu">
+                    <li><a href="subscription_page.html"><img src="https://files.catbox.moe/qsisip.png" alt="Go Premium Icon">Go Premium</a></li>
+                    <li><a href="#"><img src="https://files.catbox.moe/6jfqpl.png" alt="Blogs Icon">Blogs</a></li>
+                    <li><a href="#"><img src="https://files.catbox.moe/mv21i0.png" alt="Study Circle Icon">Study Circle</a></li>
+                    <li><a href="#" class="active"><img src="https://files.catbox.moe/qojsi7.png" alt="Weekly Report Icon">Weekly Report</a></li>
+                </ul>
+                
+                <ul class="sidebar-menu">
+                    <li><a href="#"><img src="https://files.catbox.moe/cmlw5f.png" alt="Contact Us Icon">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer">
+                © 2025 - McqDb.com
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="top-navbar">
+                <a href="index.html" class="home-icon">
+                    <img src="https://files.catbox.moe/ag0fna.png" alt="Home">
+                </a>
+                <a href="#">Workout</a>
+                <a href="#">Revision</a>
+                <a href="#">Insights</a>
+                <a href="#">Discussion</a>
+                <a href="#">Social</a>
+            </div>
+
+            <h2 class="report-header">Your Weekly Report</h2>
+            <p class="report-subheader">Analysis from Sep 2 - Sep 9, 2025</p>
+
+            <div class="report-card">
+                <div class="card-title">
+                    <img src="https://files.catbox.moe/qojsi7.png" alt="Test Progress Icon">
+                    Test Progress
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="value">0%</div>
+                        <div class="label">Accuracy</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="value">0</div>
+                        <div class="label">Questions Solved</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="value">0</div>
+                        <div class="label">Tests Taken</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="value">0%</div>
+                        <div class="label">Avg. Speed (Time)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-card">
+                <div class="card-title">
+                    <img src="https://files.catbox.moe/qojsi7.png" alt="MCQ Progress Icon">
+                    MCQ Progress
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="value">95</div>
+                        <div class="label">Questions Attempted</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="value">91</div>
+                        <div class="label">Correct Answers</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="value">4</div>
+                        <div class="label">Incorrect Answers</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="value">0</div>
+                        <div class="label">Unattempted</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-card">
+                <div class="card-title">
+                    <img src="https://files.catbox.moe/qojsi7.png" alt="Topic Analysis Icon">
+                    Topic-wise Analysis
+                </div>
+                <div class="list-item">
+                    <span class="topic-name">Biology</span>
+                    <span class="topic-score">0% Accuracy</span>
+                </div>
+                <div class="list-item">
+                    <span class="topic-name">Chemistry</span>
+                    <span class="topic-score">0% Accuracy</span>
+                </div>
+                <div class="list-item">
+                    <span class="topic-name">Physics</span>
+                    <span class="topic-score">0% Accuracy</span>
+                </div>
+            </div>
+
+            <div class="report-card">
+                <div class="card-title">
+                    <img src="https://files.catbox.moe/qojsi7.png" alt="Time Spent Icon">
+                    Time Spent
+                </div>
+                <div class="list-item">
+                    <span>Test Papers</span>
+                    <span class="topic-score">0 hours</span>
+                </div>
+                <div class="list-item">
+                    <span>MCQ Practice</span>
+                    <span class="topic-score">4 hours</span>
+                </div>
+                <div class="list-item">
+                    <span>Revision</span>
+                    <span class="topic-score">0 hours</span>
+                </div>
+            </div>
+
+            <div class="report-card">
+                <div class="card-title">
+                    <img src="https://files.catbox.moe/qojsi7.png" alt="Improvement Icon">
+                    Areas for Improvement
+                </div>
+                <p>Based on your performance, you should focus on these topics:</p>
+                <ul>
+                    <li>Physics: **Optics** and **Electrodynamics**</li>
+                    <li>Chemistry: **Organic Chemistry** reactions</li>
+                    <li>Biology: **Genetics** and **Evolution**</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        © 2025 - McqDb.com
+    </div>
+
+</body>
+</html>
